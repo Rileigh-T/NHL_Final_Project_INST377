@@ -75,7 +75,7 @@ async function checkMilestones() {
     for (const [player, milestones] of Object.entries(playerMilestones)) {
       const stats = playerSupabaseStats[player];
 
-      html += `<div class="player-box"><h3>${capitalize(player)}</h3><ul>`;
+      html += `<div class="player-box" data-aos="fade-up"><h3>${capitalize(player)}</h3><ul>`;
       if (stats) {
         html += `<li>Goals: ${stats.G}</li>`;
         html += `<li>Assists: ${stats.A}</li>`;
