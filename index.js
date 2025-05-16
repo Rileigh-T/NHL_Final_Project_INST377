@@ -32,7 +32,6 @@ app.get('/players', async (req,res) => {
     res.send(data)
 });
 
-
 app.post('/player', async(req,res) => {
     console.log('Adding Customer')
 
