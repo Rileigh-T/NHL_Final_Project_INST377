@@ -135,13 +135,13 @@ async function addPlayer() {
     if (!response.ok) {
       const err = await response.text();
       console.error("Server responded with:", err);
-      messageDiv.textContent = "Failed to add player. Check console.";
+      messageDiv.textContent = "Failed to add player.";
     } else {
       messageDiv.textContent = `Successfully added ${name}!`;
     }
   } catch (error) {
     console.error("Error adding player:", error);
-    messageDiv.textContent = "Failed to add player. Check console.";
+    messageDiv.textContent = "Failed to add player.";
   }
 }
 
@@ -150,3 +150,5 @@ window.onload = () => {
   document.getElementById("milestoneResults").innerHTML = "";
   document.getElementById("playerResults").innerHTML = "";
 };
+
+AOS.refresh();
