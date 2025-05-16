@@ -1,11 +1,10 @@
 let allPlayers = [];
 let allTeams = [];
-let playerChart; // For the Chart.js graph
-let standingsData = []; // To store the standings data
+let playerChart; 
+let standingsData = []; 
 let currentImageIndex = 0;
-let slideInterval; // To store the interval ID for image rotation
+let slideInterval; 
 
-// Map team names to 3 images each
 const teamImages = {
   // Metropolitan Division
   "carolina hurricanes": [
@@ -176,7 +175,6 @@ const teamImages = {
   ]
 };
 
-// Fetch all player 
 async function fetchAllPlayers() {
   const url = 'https://api.nhle.com/stats/rest/en/skater/summary?limit=-1&cayenneExp=seasonId=20232024';
   try {
@@ -188,7 +186,6 @@ async function fetchAllPlayers() {
   }
 }
 
-// Fetch all team stats
 async function fetchAllTeams() {
   const url = 'https://api.nhle.com/stats/rest/en/team/summary?limit=-1&cayenneExp=seasonId=20232024';
   try {
@@ -200,7 +197,6 @@ async function fetchAllTeams() {
   }
 }
 
-// Fetch standings data
 async function fetchStandings() {
   const url = 'https://api-web.nhle.com/v1/standings-season';
   try {
@@ -213,7 +209,6 @@ async function fetchStandings() {
   }
 }
 
-// Display standings data
 function displayStandings() {
   const standingsDiv = document.getElementById("standings-result");
   if (standingsData.length === 0) {
@@ -237,7 +232,6 @@ function displayStandings() {
   standingsDiv.innerHTML = standingsHTML;
 }
 
-// Search for a player
 function searchPlayer(name) {
   const resultDiv = document.getElementById("player-result");
   if (!name.trim()) {
@@ -275,35 +269,32 @@ function searchPlayer(name) {
   `;
 }
 
-// Simple function to rotate team images
 function startImageSlideshow(images) {
-  // Clear any existing interval
   if (slideInterval) {
     clearInterval(slideInterval);
   }
   
-  // Reset current image index
   currentImageIndex = 0;
   
   const imageColumnDiv = document.getElementById("team-images");
-  imageColumnDiv.innerHTML = ""; // Clear previous content
+  imageColumnDiv.innerHTML = "";
   
-  // Create a single image element that will be updated
+ 
   const imgElement = document.createElement("img");
   imgElement.id = "slideshow-image";
   imgElement.alt = "Team image";
-  imgElement.src = images[0]; // Start with first image
+  imgElement.src = images[0]; 
   
   imageColumnDiv.appendChild(imgElement);
   
-  // Set interval to change image every 3 seconds
+  
   slideInterval = setInterval(() => {
     currentImageIndex = (currentImageIndex + 1) % images.length;
     imgElement.src = images[currentImageIndex];
   }, 3000);
 }
 
-// Search for a team
+
 function searchTeam(name) {
     const message = document.getElementById("team-message");
     if (message) message.style.display = "none";
@@ -342,20 +333,20 @@ function searchTeam(name) {
     </div>
   `;
 
-  // Add team images to the image column if available
+
   const teamKey = team.teamFullName.toLowerCase();
   const images = teamImages[teamKey];
 
   if (images && images.length > 0) {
-    // Start the image slideshow with the team's images
+   
     startImageSlideshow(images);
   }
 
-  // Create Shot Chart
+  
   createShotsChart();
 }
 
-// Create Shot Chart for teams
+
 async function createShotsChart() {
   const res = await fetch("https://api.nhle.com/stats/rest/en/team/summary?sort=shotsForPerGame&cayenneExp=seasonId=20232024%20and%20gameTypeId=2");
   const data = await res.json();
@@ -364,7 +355,7 @@ async function createShotsChart() {
   const labels = teams.map(t => t.teamFullName);
   const shots = teams.map(t => t.shotsForPerGame);
 
-  // Chart.js
+
   const ctx = document.getElementById("shotsChart").getContext("2d");
   new Chart(ctx, {
     type: "bar",
@@ -386,7 +377,7 @@ async function createShotsChart() {
             color: "white"
             },
             grid: {
-            color: "rgba(255, 255, 255, 0.2)" // optional for subtle grid
+            color: "rgba(255, 255, 255, 0.2)" 
             }
         },
         y: {
@@ -394,7 +385,7 @@ async function createShotsChart() {
             color: "white"
             },
             grid: {
-            color: "rgba(255, 255, 255, 0.2)" // optional for subtle grid
+            color: "rgba(255, 255, 255, 0.2)"
             }
         }
         },
@@ -413,7 +404,7 @@ async function createShotsChart() {
     });
 }
 
-// Event listeners
+
 document.getElementById("search-button").addEventListener("click", () => {
     const message = document.getElementById("player-message");
     if (message) message.style.display = "none";
@@ -426,7 +417,7 @@ document.getElementById("team-search-button").addEventListener("click", () => {
   searchTeam(name);
 });
 
-// Fetch data on load
+
 fetchAllPlayers();
 fetchAllTeams();
 fetchStandings();

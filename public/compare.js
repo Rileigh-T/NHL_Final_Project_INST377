@@ -59,7 +59,7 @@ async function checkMilestones() {
       })
     );
 
-    // Fetch player stats from Supabase backend
+    
     const supabaseResponse = await fetch('http://localhost:3000/players');
     if (!supabaseResponse.ok) throw new Error(`HTTP error! status: ${supabaseResponse.status}`);
     const supabasePlayers = await supabaseResponse.json();
@@ -70,7 +70,7 @@ async function checkMilestones() {
       playerSupabaseStats[nameKey] = p;
     });
 
-    // Generate HTML output
+    
     let html = "";
     for (const [player, milestones] of Object.entries(playerMilestones)) {
       const stats = playerSupabaseStats[player];
@@ -100,7 +100,7 @@ async function checkMilestones() {
     document.getElementById("playerResults").innerHTML = "";
 
   } catch (error) {
-    milestoneResultsDiv.innerHTML = "<p>There was an error retrieving data. Please try again later.</p>";
+    milestoneResultsDiv.innerHTML = "<p>There was an error retrieving data.</p>";
     document.getElementById("playerResults").innerHTML = "";
     console.error("Error in checkMilestones:", error);
   }
