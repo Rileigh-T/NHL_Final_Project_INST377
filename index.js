@@ -17,9 +17,7 @@ const supabaseKey = process.env.SUPABASE_KEY;
 const { createClient } = require('@supabase/supabase-js');
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-app.get('/', (req, res) => {
-    res.sendfile('NHL_Final_Project_INST377/homepage.html', {root: __dirname});
-});
+
 
 app.get('/players', async (req,res) => {
     console.log("attempting to get all customers")
