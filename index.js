@@ -49,3 +49,5 @@ app.listen(port, () => {
     console.log('api is alive' +port);
 
 });
+
+module.exports = app;
