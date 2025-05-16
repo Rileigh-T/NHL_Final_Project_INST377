@@ -1,6 +1,5 @@
 <html>
 <head>
-    <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simpleslider@1.0.0/dist/simple-slider.min.css">
     <title>NHL Stats Search</title>
     <style>
@@ -9,31 +8,25 @@
             font-family: Arial, sans-serif;
             color: #FFFFFF;
         }
-
-        /* Full-width black header bar */
         .header {
             display: flex;
             align-items: center;
             background-color: #000;
             color: white;
             padding: 10px 20px;
-            gap: 20px; /* space between logo, title, and nav */
+            gap: 20px;
         }
-
-        /* NHL logo */
         .nhl-logo {
             width: 80px;
             height: auto;
         }
 
-        /* Title */
         .title {
             font-size: 1.5rem;
             margin: 0;
             white-space: nowrap;
         }
 
-        /* Navigation bar */
         .navbar .nav-links {
             list-style: none;
             display: flex;
@@ -83,16 +76,16 @@
             display: flex;
             flex-direction: column;
             gap: 10px;
-            width: 400px; /* Set width directly */
+            width: 400px; 
             margin-top: 20px;
         }
         .image-column img {
-            width: 100%; /* Takes full width of parent */
-            height: 500px; /* Fixed height */
-            object-fit: contain; /* Changed from scale-down to contain */
+            width: 100%; 
+            height: 500px; 
+            object-fit: contain; 
             border-radius: 8px;
             transition: opacity 0.5s ease;
-            max-width: none; /* Removes any max-width constraints */
+            max-width: none;
         }
         .player-search-container {
             display: flex;
@@ -185,7 +178,6 @@
     </div>
 </div>
     
-    <!-- Team Stats Chart -->
     <canvas id="shotsChart" width="400" height="200"></canvas>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
