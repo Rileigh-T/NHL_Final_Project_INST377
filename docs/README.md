@@ -10,7 +10,7 @@ Target Browsers:
 - IOS Safari
 - Android Chrome
 
-Developer Manual Link: 
+Developer Manual Link: https://github.com/Rileigh-T/NHL_Final_Project_INST377/blob/main/docs/Final_Project_Markdown.md
 
 
 
