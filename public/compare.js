@@ -151,4 +151,4 @@ window.onload = () => {
   document.getElementById("playerResults").innerHTML = "";
 };
 
-AOS.refresh();
+
